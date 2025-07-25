@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@100..900&display=swap');
+@import "tailwindcss";
+
+
+/* Theme - apply style to specific classes */
+@theme {
+    --font-urbanist: 'Urbanist', sans-serif;
+    --color-primary: #5EB9F0;
+    --color-secondary: #343F52;
+    --color-accent: #60697B;
+
+    --color-black-100: #000000;
+    --color-blue-100: #E5F4FD;
+    --color-white-100: #ffffff;
+    --color-white-200: #fefefe;
+    --color-gray-400: #AAB0BC;
+    
+    --shadow-background: 0px 5px 35px 0px rgba(30, 34, 40, 0.07);
+
+    --background-gradient-bottom: linear-gradient(to bottom, #F0F8FE 0%, rgba(0, 0, 0, 0.3) 100%);
+    --background-gradient-top: linear-gradient(to top, #F0F8FE 0%, rgba(0, 0, 0, 0.3) 100%);
+
+    --animate-infinite-scroll: infinite-scroll 30s linear infinite;
+
+    @keyframes infinite-scroll {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
+
+}
+
+body {
+    font-family: var(--font-urbanist);
+    background-color: var(--color-white-200);
+    scroll-behavior: smooth;
+}
+
+/* Breakpoints 
+    sm - min 640px
+    md - min 768px
+    lg - min 1024px
+    xl - min 1280px
+*/
+
+/* Base - apply style gloablly to all elements like <h1>, <p> */
+@layer base {
+    h1, h2, h3, h4 {
+        @apply text-secondary font-semibold;
+    }
+
+    p {
+        @apply text-base md:text-lg leading-6 text-accent font-medium;
+    }
+
+}
+
+/* Components - apply style to specific elements and can be used as reusable components like card, button, etc */
+
+/* Utilities - apply style to specific classes like margin, padding, typography, colors, etc */
+@layer utilities {
+    .btn {
+        @apply px-3 py-1 md:px-4 md:py-2 xl:px-6 xl:py-3 text-black-100 text-lg border-2 border-black-100 hover:bg-black-100 hover:text-white-100 transition cursor-pointer text-center w-fit;
+    }
+
+    .primary-button {
+        @apply bg-primary text-white-100 rounded-full border-2 border-primary hover:text-primary hover:bg-transparent;
+    }
+
+
+    .bg-gradient-bottom {
+        background-image: var(--background-gradient-bottom);
+    }
+
+    .bg-gradient-top {
+        background-image: var(--background-gradient-top);
+    }
+
+    .transition-ease {
+        @apply transition ease-in-out duration-500;
+    }
+
+    .swipe {
+        @apply w-full overflow-hidden p-6;
+    }
+
+}
